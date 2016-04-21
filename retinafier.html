@@ -3,39 +3,68 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Mindarc Retinafier</title>
+	<title>MindArc Retinafier</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css">
 
-	<style type="text/css" media="screen">
+	<style type="text/css">
+		.dark {
+		    background: #222;
+		    color: #aaa;
+		}
+		.dark h1 {
+			color: #ccc;
+		}
 	    #editor, #result { 
 	        width: 100%;
-	        height: 100vh;
+	        height: 80vh;
+	    }
+	    .sidebar {
+	    	margin-top: 3em;
+	    }
+	    .wrapper {
+	    	margin: 1em 0;
+	    }
+	    .pre-inline {
+	    	font-family: 'Lucida Console', 'Courier New', monospace;
+	    	color: #ccc;
 	    }
 	</style>
 
 </head>
-<body>
+<body class="dark">
 	<div class="container-fluid">
-	    <div class="col-sm-2">
-			<h1>Retinafier</h1>
-			<p>Image tags converter for retina-optimised emails.</p>
-			<p>Paste the HTML code sliced from Photoshop, and all the <strong>widths</strong> and <strong>heights</strong> of images and table elements will be halved.</p>
+		<div class="row">
+		    <div class="col-sm-2">
+		    	<div class="sidebar">
+					<h1>Retinafier</h1>
+					<p>Image and table size converter for retina-optimised emails.</p>
+					<p>Paste the HTML code sliced from Photoshop, and all the <strong class="pre-inline">width</strong class="pre-inline"> and <strong class="pre-inline">height</strong class="pre-inline"> attributes of images and table elements will be halved.</p>
 
-			<!-- Grab the code thats been pasted -->
-			<!-- <form action="">
-					<textarea name="oldcode" id="oldcode" cols="30" rows="10"></textarea>
-				<button type="submit">Submit</button>
-			</form> -->
-	    </div>
-	    <div class="col-sm-5">
-	    	<h2>Paste</h2>
-	      <div id="editor"></div>
-	    </div>
-	    <div class="col-sm-5">
-			<h2>Result</h2>
-			<!-- Display the output -->
-			<div id="result"></div>
-	    </div>
+					<button type="submit" class="btn btn-success btn-block">Retinafy!</button>
+
+					<!-- Grab the code thats been pasted -->
+					<!-- <form action="">
+							<textarea name="oldcode" id="oldcode" cols="30" rows="10"></textarea>
+						<button type="submit">Submit</button>
+					</form> -->		    		
+		    	</div>
+		    </div>
+		    <div class="col-sm-5">
+		    	<div class="wrapper">
+			    	<h2>Paste</h2>
+			      	<div id="editor"></div>
+		    	</div>
+		    </div>
+		    <div class="col-sm-5">
+		    	<div class="wrapper">
+					<h2>Result</h2>
+					<!-- Display the output -->
+					<div id="result"></div>
+		    	</div>
+
+		    </div>			
+		</div>
+
 	</div>
 
 	
@@ -43,20 +72,23 @@
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js"></script>
 	<script src="https://cloud9ide.github.io/emmet-core/emmet.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ext-emmet.js"></script>
 
 	<script>
 	    var editor = ace.edit("editor");
 	    editor.setTheme("ace/theme/tomorrow_night");
 	    editor.session.setMode("ace/mode/html");
 		editor.setOptions({
-		  fontSize: "14px"
+		  fontSize: "14px",
+		  'enableEmmet': true
 		});
 
 	    var result = ace.edit("result");
 	    result.setTheme("ace/theme/tomorrow_night");
 	    result.session.setMode("ace/mode/html");
 		result.setOptions({
-		  fontSize: "14px"
+		  fontSize: "14px",
+		  'enableEmmet': true
 		});
 	</script>
 	<script>
