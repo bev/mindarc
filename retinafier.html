@@ -11,8 +11,14 @@
 		    background: #222;
 		    color: #aaa;
 		}
-		.dark h1 {
+		.dark h1, a {
 			color: #ccc;
+		}
+		.dark a:hover,
+		.dark a:focus,
+		.dark a:active {
+			color: #aaa;
+			text-decoration: none;
 		}
 	    #editor, #result { 
 	        width: 100%;
@@ -24,10 +30,18 @@
 	    .wrapper {
 	    	margin: 1em 0;
 	    }
-	    .pre-inline {
+	    .dark .pre-inline {
 	    	font-family: 'Lucida Console', 'Courier New', monospace;
 	    	color: #ccc;
 	    }
+	    footer p {
+	    	font-size: 0.75rem;
+			text-align: center;
+	    }
+		.btn:focus,.btn:active:focus,.btn.active:focus,
+		.btn.focus,.btn:active.focus,.btn.active.focus {
+		    outline: none;
+		}
 	</style>
 
 </head>
@@ -61,10 +75,13 @@
 					<!-- Display the output -->
 					<div id="result"></div>
 		    	</div>
-
 		    </div>			
 		</div>
-
+		<div class="row">
+			<footer>
+				<p>Made by <a href="http://www.beverlycheak.com">@bev</a> <a href="http://www.mindarc.com.au">@MindArc</a></p>
+			</footer>
+		</div>
 	</div>
 
 	
