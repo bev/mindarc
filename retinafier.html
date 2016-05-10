@@ -108,6 +108,7 @@
 	var newCode;
 	var widthTest = /width="\d+"/g;
 	var heightTest = /height="\d+"/g;
+	var widthHeightTest = /(width|height)="\d+"/g;
 
 	jQuery('#retinafy').click(function() {
 		code = editor.getValue();
@@ -125,25 +126,25 @@
 		return code.replace(heightTest, convert);
 	}
 
+	/* In the code, find each width="" and height="" attribute */
+	function halfWidthHeight(code) {
+		return code.replace(widthHeightTest, convert);
+	}
+
 	/* 
 	Strip the tag to get the value
 	Half the value
 	Replace it */
 	function convert(size) {
-		// console.log(size);
 		var num = size.match(/\d+/g);
-		// console.log('num: ' + num);
 		num = num / 2;
-		// console.log('newnum: ' + num);
 		size = size.replace(/\d+/g, num);
-		// console.log('newsize: ' + size);
 		return size;
 	}
 
 	/* Display result into #result editor */
 	function halfEverything() {
-		newCode = halfWidth(code);
-		newCode = halfHeight(newCode);
+		newCode = halfWidthHeight(code);
 		result.setValue(newCode);
 		return newCode;
 	}
