@@ -92,6 +92,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ext-emmet.js"></script>
 
 	<script>
+	/* Generate the code editors onto the screen */
     var editor = ace.edit("editor");
     editor.setTheme("ace/theme/tomorrow_night");
     editor.session.setMode("ace/mode/html");
@@ -107,16 +108,14 @@
 	  fontSize: "14px",
 	  'enableEmmet': true
 	});
-	</script>
 
-	<script>
-	// Process the submitted code, strip out malicious code
+	/* Process the submitted code, strip out malicious code */
 	var code;
 	var newCode;
 	jQuery('#retinafy').click(function() {
 		code = editor.getValue();
 		console.log(code);
-		result.setValue(code);
+		halfEverything();
 	});
 
 	// In the code, find each width="" attribute
@@ -162,7 +161,12 @@
 	// Replace it
 
 	// Display result into #result editor
-
+	function halfEverything() {
+		newCode = halfWidth(code);
+		newCode = halfHeight(newCode);
+		result.setValue(newCode);
+		return newCode;
+	}
 	</script>
 
 </body>
