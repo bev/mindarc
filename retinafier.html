@@ -120,7 +120,20 @@
 	});
 
 	// In the code, find each width="" attribute
-
+	function halfWidth(code) {
+		var test = /width="\d+"/g;
+		function convert(width) {
+			// console.log(width);
+			var num = width.match(/\d+/g);
+			// console.log('num: ' + num);
+			num = num / 2;
+			// console.log('newnum: ' + num);
+			width = width.replace(/\d+/g, num);
+			// console.log('newwidth: ' + width);
+			return width;
+		}
+		return code.replace(test, convert);
+	}
 	// Strip the tag to get the value
 
 	// Half the value
@@ -128,7 +141,20 @@
 	// Replace it
 
 	// In the code, find each height="" attribute
-
+	function halfHeight(code) {
+		var test = /height="\d+"/g;
+		function convert(height) {
+			// console.log(height);
+			var num = height.match(/\d+/g);
+			// console.log('num: ' + num);
+			num = num / 2;
+			// console.log('newnum: ' + num);
+			height = height.replace(/\d+/g, num);
+			// console.log('newheight: ' + height);
+			return height;
+		}
+		return code.replace(test, convert);
+	}
 	// Strip the tag to get the value
 
 	// Half the value
